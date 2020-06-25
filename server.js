@@ -6,8 +6,6 @@ const server = net.createServer(function(socket){
     socket.setEncoding("utf8");
 
     socket.on("data", function(data){
-        const trimmedData = data.trim();
-        //console.log(trimmedData);
         console.log(data);
         socket.write(data);
     });

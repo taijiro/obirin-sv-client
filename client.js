@@ -1,4 +1,3 @@
-
 const net = require("net");
 
 const args = process.argv.slice(2);
@@ -7,16 +6,13 @@ let host = args[0];
 let port = parseInt(args[1]);
 let message = args[2];
 
-const logger = fun => console.log(`[${new Date()}] ${fun.call(null)}`);
-const client = net.createConnection({ host: host, port: port }, () => {
-});
+const client = net.createConnection({ host: host, port: port }, function(){});
 
-client.on("connect", () => {
+client.on("connect", function(){
     client.write(message);
 });
 
-client.on("data", data => {
+client.on("data", function(data){
     console.log(data.toString());
-    //logger(() => `receive message[${data}]`);
     client.destroy();
 });
